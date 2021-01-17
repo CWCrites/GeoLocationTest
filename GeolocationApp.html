@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Geographic Data</title>
+</head>
+
+<body onload="mapLoad()">
+  <h1>Location Demo</h1>
+  <form action="">
+    <div>
+      <label for="ipAddress">IP Address: </label>
+      <label id="ipAddress"></label><br>
+      <label for="country">Country: </label>
+      <label id="country"></label><br>
+      <label for="cityState">City, State: </label>
+      <label id="cityState"></label><br><br>
+      <label id="coordinates">Coordinates: </label><br>
+      <label for="latitude">Latitude: </label>
+      <label id="latitude">46.183201</label><br>
+      <label for="longitude">Longitude: </labiv>
+        <label id="longitude">-103.396507</label><br><br>
+        <a id="mapLink" href="">Visit the location!</a><br><br>
+    </div>
+    <div id='map' style='width: 400px; height: 300px;'>
+      <script name='Geo' src="GeolocationApp.js"></script>
+      <script name='interactiveMap' src='https://api.mapbox.com/mapbox-gl-js/v2.0.1/mapbox-gl.js'></script>
+      <link href="https://api.mapbox.com/mapbox-gl-js/v2.0.1/mapbox-gl.css" rel="stylesheet" />
+    </div>
+   
+    <script>
+      //More examples - https://docs.mapbox.com/mapbox-gl-js/example/
+      setTimeout(function(){
+        //alert(document.getElementById("longitude").innerHTML);
+        //alert(document.getElementById("latitude").innerHTML);
+        mapboxgl.accessToken = 'pk.eyJ1IjoiY2NyaXRlcyIsImEiOiJja2p6eHV3ZmgwMGxqMnVucHhkNjh0cHR3In0.69gImwNoAhlJHVYI2urkDA';
+        var map = new mapboxgl.Map({
+          container: 'map',
+          style: 'mapbox://styles/mapbox/streets-v10', // stylesheet location
+          center: [document.getElementById("longitude").innerHTML, document.getElementById("latitude").innerHTML], // starting position [lng, lat]
+          zoom: 10
+        });
+        var marker = new mapboxgl.Marker()
+          .setLngLat([document.getElementById("longitude").innerHTML, document.getElementById("latitude").innerHTML])
+          .addTo(map);
+      }, 500);
+    </script>
+  </form>
+</body>
+</html
